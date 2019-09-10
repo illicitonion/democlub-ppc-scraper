@@ -27,6 +27,11 @@ Uses http://vote.labour.org.uk/all-candidates as a source of truth. Unfortunatel
 
 Note that the Labour Party have a series of typos in people's names which brings up some false positives. It also claims that one candidate (Rhea Wolfson in Livingston) is running who Democracy Club believe has since stepped down.
 
+Liberal Democrat Party
+----------------------
+
+Uses https://www.markpack.org.uk/153722/liberal-democrat-parliamentary-candidates/ as a source of truth.
+
 How to contribute
 -----------------
 

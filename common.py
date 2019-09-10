@@ -11,9 +11,11 @@ class Candidate:
 
     def has_name(self, name):
         def split(s):
-            parts = re.split(" |-", s.lower())
+            parts = re.split(" |-", s.lower().replace("’", "'"))
             if parts[0] == "dr":
                 parts = parts[1:]
+            if parts[-1] == "mp":
+                parts = parts[:-1]
             return parts
 
         self_name_parts = split(self.name)
@@ -26,4 +28,4 @@ class Candidate:
 
 
 def constituency_to_dc_id(constituency):
-    return f"parl.{constituency.lower().replace(' ', '-').replace(',', '').replace('ô', 'o')}.next"
+    return f"parl.{constituency.lower().replace(' ', '-').replace(',', '').replace('&', 'and').replace('ô', 'o')}.next"
