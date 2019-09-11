@@ -8,6 +8,12 @@ def from_card(card):
     href = link.get_property("href")
     constituency = link.find_element_by_class_name("card-title").text
     name = link.find_element_by_class_name("card-meta").text.strip()
+    if name == "Cherlyn Pidgeon":
+        name = "Cheryl Pidgeon"
+    elif name == "Laura Davis":
+        name = "Laura Davies"
+    elif name == "Belina Loveluck-Edwards":
+        name = "Belinda Loveluck-Edwards"
     return Candidate(href=href, constituency=constituency, name=name)
 
 

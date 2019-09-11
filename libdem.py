@@ -25,6 +25,9 @@ def get_candidates():
 
             if " (" in name:
                 name = name[: name.find(" (")]
+
+            if name == "Julia Ewart":
+                name = "Jules Ewart"
             yield Candidate(name=name, constituency=constituency, href=None)
     finally:
         driver.quit()
