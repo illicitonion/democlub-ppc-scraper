@@ -42,6 +42,8 @@ for line in reader:
                 print(
                     f"Difference! Constituency={constituency_id}, party={party_id}, party_candidate={candidate.name}, democlub={candidate_name}"
                 )
+        elif party_id in {"PP53", "PP63", "PP90"} and candidate_name:
+            print(f"DemoClub knows more?: {constituency_id} {party_id} {party_name} {candidate_name} {source}")
 
 for constituency, value in constituency_to_party_to_candidate.items():
     if constituency not in democlub_constituencies:

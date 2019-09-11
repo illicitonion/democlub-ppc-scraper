@@ -8,7 +8,7 @@ def get_candidates():
 
     try:
         driver.get("https://www.markpack.org.uk/153722/liberal-democrat-parliamentary-candidates/")
-        uls = driver.find_elements_by_tag_name("ul")[:5]
+        uls = driver.find_elements_by_tag_name("ul")[:6]
         lis = []
         for ul in uls:
             lis.extend(ul.find_elements_by_tag_name("li"))
@@ -18,6 +18,8 @@ def get_candidates():
             constituency, name = parts[0], parts[-1]
             if constituency == "Richmond (Yorkshire)":
                 constituency = "richmond-yorks"
+            elif constituency == "Wentworth and Deane":
+                constituency = "Wentworth and Dearne"
             if " (" in constituency:
                 constituency = constituency[: constituency.find(" (")]
             if constituency.endswith(" constituency"):

@@ -5,7 +5,7 @@ Scrapes UK politcal party lists of PPCs and compares them with [Democracy Club](
 
 Lists places where a party claims a candidate is standing, where Democracy Club doesn't claim the same thing.
 
-Does not do the backwards check; i.e. if Democracy Club claims someone is standing, and the party doesn't list a candidate, nothing is emitted.
+Also lists places where Democracy Club knows about a candidate which our sources of truth don't.
 
 How to run
 ----------
