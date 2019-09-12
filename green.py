@@ -3,6 +3,9 @@ from selenium import webdriver
 from common import Candidate
 
 
+source = "https://my.greenparty.org.uk/candidates"
+
+
 def get_candidates():
     driver = webdriver.Chrome()
 
@@ -16,7 +19,7 @@ def get_candidates():
             candidates.append(Candidate(constituency=cells[0].text, name=link.text, href=link.get_property("href")))
 
     try:
-        driver.get("https://my.greenparty.org.uk/candidates")
+        driver.get(source)
         extract_table()
         next_links = driver.find_elements_by_link_text("next ›")
         while next_links:

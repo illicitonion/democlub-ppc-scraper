@@ -3,6 +3,9 @@ from selenium import webdriver
 from common import Candidate
 
 
+source = "http://vote.labour.org.uk/all-candidates"
+
+
 def from_card(card):
     link = card.find_element_by_tag_name("a")
     href = link.get_property("href")
@@ -27,7 +30,7 @@ def is_candidate(driver, candidate):
 def get_candidates():
     driver = webdriver.Chrome()
     try:
-        driver.get("http://vote.labour.org.uk/all-candidates")
+        driver.get(source)
         cards = driver.find_elements_by_css_selector("li.card")
         candidates = [from_card(card) for card in cards]
         without_mps = [c for c in candidates if is_candidate(driver, c)]

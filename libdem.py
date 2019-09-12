@@ -3,11 +3,14 @@ from selenium import webdriver
 from common import Candidate
 
 
+source = "https://www.markpack.org.uk/153722/liberal-democrat-parliamentary-candidates/"
+
+
 def get_candidates():
     driver = webdriver.Chrome()
 
     try:
-        driver.get("https://www.markpack.org.uk/153722/liberal-democrat-parliamentary-candidates/")
+        driver.get(source)
         uls = driver.find_elements_by_tag_name("ul")[:6]
         lis = []
         for ul in uls:
