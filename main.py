@@ -30,6 +30,8 @@ for line in csv.reader(response.iter_lines(decode_unicode=True)):
     id, name, honorific_prefix, honorific_suffix, gender, birth_date, election, party_id, party_name, post_id, post_label, mapit_url, elected, email, twitter_username, facebook_page_url, party_ppc_page_url, facebook_personal_url, homepage_url, wikipedia_url, linkedin_url, image_url, proxy_image_url_template, image_copyright, image_uploading_user, image_uploading_user_notes, twitter_user_id, election_date, election_current, party_lists_in_use, party_list_position, old_person_ids, gss_code, parlparse_id, theyworkforyou_url, party_ec_id, favourite_biscuits, cancelled_poll, wikidata_id = (
         line
     )
+    if election.startswith("local."):
+        continue
     party = f"PP{party_id[6:]}"
     party_to_name_and_id_to_constituencies[party][(name, id)].add(post_label)
 
