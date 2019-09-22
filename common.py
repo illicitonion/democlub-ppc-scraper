@@ -11,7 +11,7 @@ class Candidate:
 
     def has_name(self, name):
         def split(s):
-            parts = re.split(" |-", s.lower().replace("’", "'"))
+            parts = re.split(" |-", s.strip().lower().replace("’", "'"))
             if parts[0] == "dr":
                 parts = parts[1:]
             if parts[-1] == "mp":
