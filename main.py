@@ -12,6 +12,10 @@ import requests
 from common import constituency_to_dc_id
 
 
+if os.getenv("BING_MAPS_API_KEY", None) is None:
+    print("WARNING: env var BING_MAPS_API_KEY is not set - will not look up existing candidate pages")
+
+
 def source_for(party):
     if party == "PP53":
         return labour.source
