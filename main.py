@@ -31,7 +31,7 @@ response.encoding = "utf-8"
 for line in csv.reader(response.iter_lines(decode_unicode=True)):
     if not line:
         continue
-    id, name, honorific_prefix, honorific_suffix, gender, birth_date, election, party_id, party_name, post_id, post_label, mapit_url, elected, email, twitter_username, facebook_page_url, party_ppc_page_url, facebook_personal_url, homepage_url, wikipedia_url, linkedin_url, image_url, proxy_image_url_template, image_copyright, image_uploading_user, image_uploading_user_notes, twitter_user_id, election_date, election_current, party_lists_in_use, party_list_position, old_person_ids, gss_code, parlparse_id, theyworkforyou_url, party_ec_id, favourite_biscuits, cancelled_poll, wikidata_id = (
+    id, name, honorific_prefix, honorific_suffix, gender, birth_date, election, party_id, party_name, post_id, post_label, mapit_url, elected, email, twitter_username, facebook_page_url, party_ppc_page_url, facebook_personal_url, homepage_url, wikipedia_url, linkedin_url, image_url, proxy_image_url_template, image_copyright, image_uploading_user, image_uploading_user_notes, twitter_user_id, election_date, election_current, party_lists_in_use, party_list_position, old_person_ids, gss_code, parlparse_id, theyworkforyou_url, party_ec_id, favourite_biscuits, cancelled_poll, wikidata_id, blog_url, instagram_url, youtube_profile = (
         line
     )
     if election.startswith("local."):
