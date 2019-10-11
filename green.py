@@ -15,8 +15,10 @@ def get_candidates():
         table = driver.find_element_by_tag_name("tbody")
         for row in table.find_elements_by_tag_name("tr"):
             cells = row.find_elements_by_tag_name("td")
-            link = cells[2].find_element_by_tag_name("a")
-            candidates.append(Candidate(constituency=cells[0].text, name=link.text, href=link.get_property("href")))
+            links = cells[2].find_elements_by_tag_name("a")
+            if links:
+                link = links[0]
+                candidates.append(Candidate(constituency=cells[0].text, name=link.text, href=link.get_property("href")))
 
     try:
         driver.get(source)
