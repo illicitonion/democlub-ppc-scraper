@@ -126,17 +126,22 @@ for line in reader:
     constituency_id, party_id, party_name, candidate_name, candidate_profile_url, source, twitter, facebook, website, email, email_source, comments, shrug = (
         line
     )
+
+    def new_value_string():
+        return f"{constituency_id}\t{party_id}\t{party_name}\t{candidate.name}\t{find_known_page(party_id, candidate) or ''}\t{candidate.href or source_for(party_id)}"
+
     democlub_constituencies.add(constituency_id)
     if candidate_name:
         democlub_candidate_counts[party_name] += 1
     if constituency_id in constituency_to_party_to_candidate:
         if party_id in constituency_to_party_to_candidate[constituency_id]:
             candidate = constituency_to_party_to_candidate[constituency_id][party_id]
+            if candidate.name.lower() in comments.lower():
+                print(f"Candidate found from party who is in the comments for the constituency: {new_value_string()}")
+                continue
             if not candidate.has_name(candidate_name):
                 if not candidate_name:
-                    new_values.append(
-                        f"{constituency_id}\t{party_id}\t{party_name}\t{candidate.name}\t{find_known_page(party_id, candidate) or ''}\t{candidate.href or source_for(party_id)}"
-                    )
+                    new_values.append(new_value_string())
                 else:
                     differences.append(
                         f"{constituency_id}\t{party_id}\t{party_name}\tDemoClub={candidate_name}|Found={candidate.name}\tDemoClub={candidate_profile_url}|Found={find_known_page(party_id, candidate)}\t{comments}"
