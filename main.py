@@ -117,6 +117,8 @@ new_values = []
 differences = []
 
 democlub_constituencies = set()
+
+democlub_candidate_counts = defaultdict(lambda: 0)
 reader = csv.reader(response.iter_lines(decode_unicode=True))
 for line in reader:
     if not line:
@@ -125,6 +127,8 @@ for line in reader:
         line
     )
     democlub_constituencies.add(constituency_id)
+    if candidate_name:
+        democlub_candidate_counts[party_name] += 1
     if constituency_id in constituency_to_party_to_candidate:
         if party_id in constituency_to_party_to_candidate[constituency_id]:
             candidate = constituency_to_party_to_candidate[constituency_id][party_id]
@@ -144,8 +148,27 @@ for constituency, value in constituency_to_party_to_candidate.items():
     if constituency not in democlub_constituencies:
         print("!!! Constituency mismatch: {}: {}".format(constituency, value))
 
+if new_values:
+    print("")
+    print("New values:")
+    print("===========")
+    print("")
 for new in new_values:
-    print(f"New: {new}")
+    print(f"{new}")
+
+if differences:
+    print("")
+    print("Differences:")
+    print("============")
+    print("")
 
 for diff in differences:
-    print(f"Difference: {diff}")
+    print(f"{diff}")
+
+
+print("")
+print("Summary:")
+print("========")
+for party, count in sorted(democlub_candidate_counts.items(), key=lambda kv: kv[1], reverse=True):
+    if count > 9:
+        print(f"{party}: {count}")
