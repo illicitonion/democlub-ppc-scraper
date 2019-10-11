@@ -14,6 +14,8 @@ class Candidate:
             parts = re.split(" |-", s.strip().lower().replace("’", "'"))
             if parts[0] == "dr":
                 parts = parts[1:]
+            if parts[0] == "robbie":
+                parts[0] = "robert"
             if parts[-1] == "mp":
                 parts = parts[:-1]
             return parts
